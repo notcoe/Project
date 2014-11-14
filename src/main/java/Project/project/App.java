@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,9 +32,22 @@ public class App
     	   }
     	   JSONArray array = new JSONArray(sb.toString());
     	   for(int i=0 ; i<array.length();i++){
-    		   JSONObject book = array.getJSONObject(i);
-    		   if((book.getDouble("id")==2)){
-    		   System.out.println(book.get("name"));
+    		   JSONObject rfid = array.getJSONObject(i);
+    		   if((rfid.getDouble("id")==2)){
+    			   System.out.println((rfid.get("name")));
+    			   JSONObject json = new JSONObject();
+    			   json = array.getJSONObject(i);
+    			   System.out.println(json.toString());
+    			   try{
+    				   HttpPost requestpost= new HttpPost("http://localhost:3000/api/show");
+    				   StringEntity params = new StringEntity(json.toString());
+    				   requestpost.setHeader("Content-type", "application/json");
+    				   requestpost.setEntity(params);
+    				   HttpResponse responepost = client.execute(requestpost);
+    				   System.out.println("Finish Post");
+    			   }catch(Exception e){
+    				   e.printStackTrace();
+    			   }
     		   }
     	   }
        }catch(Exception e){
