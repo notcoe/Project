@@ -22,7 +22,7 @@ public class App
     {
        try{
     	   HttpClient client = HttpClientBuilder.create().build();
-    	   HttpGet request = new HttpGet("http://localhost:3000/api/book");
+    	   HttpGet request = new HttpGet("http://localhost:3000/api/std");
     	   HttpResponse response = client.execute(request);
     	   BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
     	   StringBuilder sb = new StringBuilder();
