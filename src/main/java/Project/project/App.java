@@ -33,7 +33,7 @@ public class App
     	   JSONArray array = new JSONArray(sb.toString());
     	   for(int i=0 ; i<array.length();i++){
     		   JSONObject rfid = array.getJSONObject(i);
-    		   if((rfid.getDouble("id")==1)){
+    		   if((rfid.getDouble("id")==2)){
     			   System.out.println((rfid.get("name")));
     			   JSONObject json = new JSONObject();
     			   json = array.getJSONObject(i);
