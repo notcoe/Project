@@ -1,0 +1,10 @@
+::-->> SetDatabase ( MongoDB ) <<--::
+
+<1.> run MongoDB : bin\mongod --dbpath=D:\data
+
+<2.>    เข้าใช้  MongoDB : bin\mongo
+
+> use my_server
+> db.std.insert({id:1,name:"War",date:"24/11/2557",time:"10:00" })
+  db.std.insert({id:2,name:"Patty",date:"24/11/2557",time:"10:35"})
+  db.std.insert({id:3,name:"Not",date:"24/11/2557",time:"11:00"})
