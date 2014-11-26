@@ -9,8 +9,6 @@ angular.module("myApp",['btford.socket-io'])
 	$scope.books = [];
   $scope.bookInstance = {};
   $scope.std = {};
-  $scope.person = {};
-
 
   refleshBooks();
 
@@ -19,12 +17,6 @@ function refleshBooks(){
   		$scope.std = data;
   	})
 }
-   
-    $http.get('/api/show').success(function(data){
-      $scope.person = data;
-    })
-
-
   $scope.save =function(){
     $http.post('/api/book',$scope.bookInstance).success(function(data){
       $scope.books.push(data);
@@ -36,5 +28,12 @@ function refleshBooks(){
     refleshBooks();
   });
 
-
 })
+
+.controller('adminCtrl', function($scope,$http){
+  $scope.persons = [];
+
+  $http.get('/api/std').success(function(data){
+  $scope.persons = data;
+  })
+});
