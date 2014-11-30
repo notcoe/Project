@@ -1,6 +1,6 @@
 ::-->> SetDatabase ( MongoDB ) <<--::
 
-<1.> run MongoDB : bin\mongod --dbpath=D:\data
+<1.> run MongoDB : bin\mongod --dbpath="D:\data"
 
 <2.>    เข้าใช้  MongoDB : bin\mongo
 
