@@ -31,3 +31,13 @@ function refleshBooks(){
 
 
 })
+
+
+.controller('adminCtrl', function($scope,$http){
+  $scope.persons = [];
+
+  $http.get('/api/std').success(function(data){
+  $scope.persons = data;
+  })
+})
+;

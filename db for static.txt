@@ -1,0 +1,12 @@
+db.time for test static
+
+> use my_server
+>db.time.insert({id:1,name:"War",date:"24/11/2557",time:"10:00" })
+  db.time.insert({id:2,name:"Patty",date:"24/11/2557",time:"10:35"})
+  db.time.insert({id:3,name:"Not",date:"24/11/2557",time:"11:00"})
+db.time.insert({id:2,name:"Patty",date:"25/11/2557",time:"9:40"})
+db.time.insert({id:1,name:"War",date:"25/11/2557",time:"10:30" })
+ db.time.insert({id:3,name:"Not",date:"25/11/2557",time:"10:10"})
+db.time.insert({id:2,name:"Patty",date:"26/11/2557",time:"10:50"})
+db.time.insert({id:1,name:"War",date:"26/11/2557",time:"9:50" })
+ db.time.insert({id:3,name:"Not",date:"26/11/2557",time:"10:45"})
