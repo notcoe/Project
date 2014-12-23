@@ -1,4 +1,0 @@
-use my_server
-db.std.insert({id:1,name:"Wor"})
-db.std.insert({id:2,name:"Patty"})
-db.std.insert({id:3,name:"Not"})
