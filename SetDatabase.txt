@@ -7,5 +7,5 @@
 > use my_server
 > 
 db.std.insert({rfid:"5000B1DA96A",id:"5510110604",name:"Worakrit Soontornthamniti" })
-db.std.insert({rfid:"5000B1DA96A",id:"5510110604",name:"Pattranit Musikaprayoon" })
+db.std.insert({rfid:"5000B1DA96A",id:"5510110245",name:"Pattranit Musikaprayoon" })
 db.std.insert({rfid:"5000B1DA9CA",id:"5510110331",name:"Siriphon  Panyathipo"})
