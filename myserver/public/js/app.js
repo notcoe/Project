@@ -45,6 +45,11 @@ function refleshBooks(){
     $scope.formatDate={};
     refleshBooks();
   
+<<<<<<< HEAD
+  $scope.persons = [];
+  $scope.selectedModel = {};
+  refreshPersons();
+=======
  
   function refleshBooks(){    
     $http.get('/api/findsavetime').success(function(data){
@@ -64,6 +69,7 @@ function refleshBooks(){
         }
       };  
     };
+>>>>>>> d16cc4eae15a0651be674f45b4dc963c15def9ad
 
 
     $scope.filterOptions = {
@@ -87,9 +93,53 @@ function refleshBooks(){
       return true;
     } 
 
+<<<<<<< HEAD
+  $scope.submit = function(){
+        
+        $http.post('api/std',{     //keep data in database
+          rfid : $scope.rfid,
+          id : $scope.id,
+          name : $scope.name         
+        })
+=======
     else {
       return false;
     }
   };  
+<<<<<<< HEAD
+=======
+
+>>>>>>> d16cc4eae15a0651be674f45b4dc963c15def9ad
+
+
+<<<<<<< HEAD
+ };
+
+ $scope.idSearch = "";
+ $scope.personInstance = {};
+ $scope.person_searchAll = [];
+ $scope.ID_search = {};
+
+  $scope.ID_searching = function (){
+
+    $http.post('/api/getByID',$scope.ID_search).success(function(data){
+      $scope.person_searchAll = data;     
+      console.log(data);
+    })
+  }
+
+$scope.edit = function(){
+    $http.post('/api/edit', $scope.selectedModel).success(function(data){
+      $scope.selectedModel = {};
+    });
+  }
+
+})
+=======
+
+ 
+
+>>>>>>> a25e104b31fd2310ca142554052336fc5ed70f3f
   
 });
+>>>>>>> d16cc4eae15a0651be674f45b4dc963c15def9ad
