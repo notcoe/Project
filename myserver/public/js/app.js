@@ -36,6 +36,7 @@ function refleshBooks(){
 .controller('adminCtrl', function($scope,$http,socketIO){
   
   $scope.persons = [];
+  $scope.selectedModel = {};
   refreshPersons();
 
   function refreshPersons(){
@@ -54,16 +55,32 @@ function refleshBooks(){
         $http.post('api/std',{     //keep data in database
           rfid : $scope.rfid,
           id : $scope.id,
-          name : $scope.name
-
-                 
+          name : $scope.name         
         })
 
          .success(function(data){  
              console.log("seccess");
          })
 
-    };
+ };
 
+ $scope.idSearch = "";
+ $scope.personInstance = {};
+ $scope.person_searchAll = [];
+ $scope.ID_search = {};
 
-});
+  $scope.ID_searching = function (){
+
+    $http.post('/api/getByID',$scope.ID_search).success(function(data){
+      $scope.person_searchAll = data;     
+      console.log(data);
+    })
+  }
+
+$scope.edit = function(){
+    $http.post('/api/edit', $scope.selectedModel).success(function(data){
+      $scope.selectedModel = {};
+    });
+  }
+
+})

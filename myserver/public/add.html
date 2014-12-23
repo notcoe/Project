@@ -26,22 +26,23 @@
 </nav>
 
 
-	
-	<table class="table table-hover table-striped" ng-submit="edit()">
-		<thead>
-			<th>RFID</th>
-			<th>ID</th>
-			<th>NAME</th>
-			
-		</thead>	
-		<tbody>
-			<tr ng-repeat="person in persons">
-				<td>{{person.rfid}}</td>
-				<td>{{person.id}}</td>
-				<td>{{person.name}}</td>
-				
-			</tr>
-		</tbody>
-	</table>
+
+      <form role="form" ng-submit="submit()">
+        <div class="form-group">
+    <label for="InputID">RFID</label>
+    <input type="text" class="form-control" id="InputRFID" placeholder="Enter RFID" ng-model="rfid">
+  </div>
+    <div class="form-group">
+    <label for="InputID">ID</label>
+    <input type="number" class="form-control" id="InputID" placeholder="Enter ID" ng-model="id">
+  </div>
+  <div class="form-group">
+    <label for="InputName">Name</label>
+    <input type="text" class="form-control" id="InputName" placeholder="Enter Name" ng-model="name">
+  </div>
+ 
+  <button type="submit" class="btn btn-success">Add</button>
+  </form>
+
 </body>
 </html>
