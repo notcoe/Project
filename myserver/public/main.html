@@ -7,13 +7,17 @@
   <script type="text/javascript" src="lib/angular-socket-io/socket.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
+  <link href="css/freelancer.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/fonts.css" rel="stylesheet" type="text/css">
+  <link href="css/fonts2.css" rel="stylesheet" type="text/css">
 </head>
 
 <body ng-controller="DropdownCtrl">
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-bright" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">CARD</a>
+      <a class="navbar-brand" href="#">Project</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -24,13 +28,24 @@
 
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/admin.html">Admin</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-Filter:
+<header>
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                        <h1>ARRIVE TIME</h1>
+                        <hr class="star-light">                
+                </div>
+            </div>
+        </div>
+</header>
+
+<form class="form-inline pull-right">
+<h6 class="text-success"> Filter: 
     <select ng-model="filterItem.store" ng-options="item.name for item in filterOptions.stores">
     </select>
     
@@ -38,28 +53,28 @@ Filter:
   Date:
    <input type="date" id="exampleInput" name="input" ng-model="date" ng-change=filterDate()
        placeholder="yyyy-mm-dd" required />
-        <div>{{date | date:"dd/MM/yyyy"}}</div>
+        <!-- <div>{{date | date:"dd/MM/yyyy"}}</div> -->
   </form>
-   
+</h6>
+</form>
 
-
-
+ 
 <table class="table table-striped">
+    
     <thead>
-      <th class="text-danger">ID</th>
-      <th class="text-danger">Name</th>
-      <th class="text-danger">Date</th>
-      <th class="text-danger">Time</th>
+      <th class="text-primary"><h4>ID</h4></th>
+      <th class="text-primary"><h4>Name</h4></th>
+      <th class="text-primary"><h4>Date</h4></th>
+      <th class="text-primary"><h4>Time</h4></th>  
     </thead>
     <tbody>
       <tr data-ng-repeat="item in std | filter:customFilterDate" >
         <td class="text-info">{{item.id}}</td>
         <td class="text-info">{{item.name}}</td>
-        <td class="text-primary">{{item.date}}</td>
-        <td class="text-primary">{{item.time}}</td>
+        <td class="text-info">{{item.date}}</td>
+        <td class="text-info">{{item.time}}</td>
       </tr>
     </tbody>
   </table>
-
 </body>
 </html>
