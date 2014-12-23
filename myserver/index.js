@@ -69,7 +69,7 @@ app.get('/api/findsavetime',function(req,res){
 
 
 app.get('/api/show',function(req,res){
-	res.send(lastRfcard);
+	res.send(savelast);
 });
 
 app.get('/api/main',function(req,res){
