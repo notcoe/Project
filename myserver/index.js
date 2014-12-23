@@ -95,15 +95,6 @@ app.get('/api/main',function(req,res){
 	res.redirect('/main.html');
 })
 
-
-app.get('/api/std',function(reg,res){      //sent data from server to app.js (pass docs) 
-
-      db.std.find({},function(err,docs){   //query database
-           res.send(docs);
- 
-      });     
-})
-
 app.post('/api/std',function(req,res){
     db.std.insert(req.body,function(err,docs){   //query database keep data in database
            res.send(docs);

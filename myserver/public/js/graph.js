@@ -26,7 +26,13 @@ angular.module('google-chart-example', ['googlechart'])
         "label": "Patty",
         "type": "number",
         "p": {}
-      }
+      },
+      {
+        "id": "2",
+        "label": "Not",
+        "type": "number",
+        "p": {}
+      }      
     ],"rows": [
       {
         "c": [
@@ -34,12 +40,16 @@ angular.module('google-chart-example', ['googlechart'])
             "v": "22/12/2014"
           },
           {
-            "v": searchTime("22/12/2014","Worakrit Soontornthamniti"),
-            "f": getTime("22/12/2014","Worakrit Soontornthamniti")
+            "v": searchTime("22/12/2014","5510110604"),
+            "f": getTime("22/12/2014","5510110604")
           },
           {
-            "v": searchTime("22/12/2014","Pattranit Musikaprayoon"),
-            "f": getTime("22/12/2014","Pattranit Musikaprayoon")
+            "v": searchTime("22/12/2014","5510110245"),
+            "f": getTime("22/12/2014","5510110245")
+          },
+          {
+            "v": searchTime("22/12/2014","5510110331"),
+            "f": getTime("22/12/2014","5510110331")
           }
         ]
       },
@@ -49,12 +59,16 @@ angular.module('google-chart-example', ['googlechart'])
             "v": "23/12/2014"
           },
           {
-            "v": searchTime("23/12/2014","Worakrit Soontornthamniti"),
-            "f": getTime("23/12/2014","Worakrit Soontornthamniti")
+            "v": searchTime("23/12/2014","5510110604"),
+            "f": getTime("23/12/2014","5510110604")
           },
           {
-            "v": searchTime("23/12/2014","Pattranit Musikaprayoon"),
-            "f": getTime("23/12/2014","Pattranit Musikaprayoon")
+            "v": searchTime("23/12/2014","5510110245"),
+            "f": getTime("23/12/2014","5510110245")
+          },
+          {
+            "v": searchTime("23/12/2014","5510110331"),
+            "f": getTime("23/12/2014","5510110331")
           }
         ]
       },
@@ -64,29 +78,34 @@ angular.module('google-chart-example', ['googlechart'])
             "v": "24/12/2014"
           },
           {
-            "v": searchTime("24/12/2014","Worakrit Soontornthamniti"),
-            "f": getTime("24/12/2014","Worakrit Soontornthamniti")          },
+            "v": searchTime("24/12/2014","5510110604"),
+            "f": getTime("24/12/2014","5510110604")          
+          },
           {
-            "v": searchTime("24/12/2014","Pattranit Musikaprayoon"),
-            "f": getTime("24/12/2014","Pattranit Musikaprayoon")
+            "v": searchTime("24/12/2014","5510110245"),
+            "f": getTime("24/12/2014","5510110245")
+          },
+          {
+            "v": searchTime("24/12/2014","5510110331"),
+            "f": getTime("24/12/2014","5510110331")
           }
         ]
       }
     ]};
-    function searchTime(date,name){
+    function searchTime(date,id){
         for(var i = 0; i < data.length; i++){
-            if(data[i].DATE == date && data[i].NAME == name){
+            if(data[i].DATE == date && data[i].ID == id){
                 var time = data[i].TIME.HOUR+ (data[i].TIME.MINUTE/60)  ;
-                console.log(time);
+                console.log(data[i].NAME+time);
                 return time;
             }
         }
     }
-    function getTime(date,name){
+    function getTime(date,id){
         for(var i = 0; i < data.length; i++){
-            if(data[i].DATE == date && data[i].NAME == name){
+            if(data[i].DATE == date && data[i].ID == id){
                 var time = data[i].TIME.HOUR+":"+data[i].TIME.MINUTE ;
-                console.log(time);
+                console.log(data[i].NAME+time);
                 return time;
             }
         }
@@ -95,7 +114,7 @@ angular.module('google-chart-example', ['googlechart'])
 
 
     chart1.options = {
-    "fill": 20,
+
     "displayExactValues": true,
     "vAxis": {
       "title": "Time",
@@ -107,9 +126,6 @@ angular.module('google-chart-example', ['googlechart'])
       "title": "Date"
     }
   };
-
-    
-
     chart1.formatters = {};
 
     $scope.chart = chart1;
