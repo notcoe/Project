@@ -9,8 +9,28 @@
     <script type="text/javascript" src="/lib/socket.io-client/socket.io.js"></script>
     <script type="text/javascript" src="/lib/angular-socket-io/socket.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
   </head>
   <body ng-controller="mainCtrl">
-  <h1>{{std.name}}</h1>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">CARD</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="/main.html">Main</a></li>
+          <li><a href="/showrt.html">Real-Time</a></li>
+          <li><a href="/static.html">Static</a></li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/admin.html">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <h1>{{std.NAME}}</h1>
   </body>
 </html>

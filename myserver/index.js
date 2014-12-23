@@ -1,6 +1,7 @@
 var express=require('express')
 var mongojs=require('mongojs')
 var app = require('express')();
+var dateFormat = require('dateformat');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var bodyParser = require('body-parser')
@@ -9,8 +10,10 @@ var dbsave =mongojs('my_server',['st']);
 var dbtime =mongojs('my_server',['time']);
 
 var lastRfcard = {};
-var ndate = {};
-var savelast ={}
+var ndate = {};  
+var now={};
+var time={};
+var savelast ={};
 
 app.use(express.static(__dirname+'/public'));
 
@@ -39,23 +42,25 @@ app.get('/api/std',function(req,res){
 //for static
 app.get('/api/time',function(req,res){
 	dbtime.time.find({},function(err,data){
-	res.send(data);	
+	res.send(data);
+	console.log("Connect /api/time");
 	});
 });
 
 app.post('/api/show',function(req,res){		
 	lastRfcard=req.body
-	ndate = new Date();
-	console.log(lastRfcard);
+	now = new Date();
+	ndate = dateFormat(now, "d/m/yyyy");
+	console.log(ndate);
 	savetime();
 	console.log(savelast);
 	io.emit('sendRF', lastRfcard.name);
 	io.emit('book:reflesh',lastRfcard);
-
+	res.send(savelast)
 });
 
 
-app.get('/api/savetime',function(req,res){
+app.get('/api/findsavetime',function(req,res){
 	dbsave.st.find({},function(err,savetime){
 	res.send(savetime);	
 	});
@@ -73,8 +78,12 @@ app.get('/api/main',function(req,res){
 
 
 function savetime(){
-	savelast ={	id:lastRfcard.id,
-				name:lastRfcard.name,
-				date:ndate}
+	savelast ={	RFID:lastRfcard.RFID,
+				ID:lastRfcard.ID,
+				NAME:lastRfcard.NAME,
+				DATE:ndate,
+				TIME:{HOUR:now.getHours(),
+					  MINUTE:now.getMinutes(),
+					  SECOND:now.getSeconds()}}
 	dbsave.st.insert(savelast);
 }

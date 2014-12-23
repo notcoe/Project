@@ -1,16 +1,14 @@
 angular.module('google-chart-example', ['googlechart'])
 .controller("MainCtrl", function ($scope,$http) {
-    var persons = [];
-    $http.get('/api/time').success(function(data){
-        persons = data;
-
-    })
-
-    
+     $scope.persons = [];
     var chart1 = {};
     chart1.type = "AreaChart";
     chart1.displayed = true;
-    chart1.data = {"cols": [
+
+      $http.get('/api/findsavetime').success(function(data){
+       
+        $scope.persons = data;
+          chart1.data = {"cols": [
       {
         "id": "date",
         "label": "Date",
@@ -28,63 +26,73 @@ angular.module('google-chart-example', ['googlechart'])
         "label": "Patty",
         "type": "number",
         "p": {}
-      },
-      {
-        "id": "3",
-        "label": "Not",
-        "type": "number",
-        "p": {}
       }
     ],"rows": [
       {
         "c": [
           {
-            "v": "24/11/2577"
+            "v": "22/12/2014"
           },
           {
-            "v": 7
+            "v": searchTime("22/12/2014","Worakrit Soontornthamniti"),
+            "f": getTime("22/12/2014","Worakrit Soontornthamniti")
           },
           {
-            "v": 8
-          },
-          {
-            "v": 9
+            "v": searchTime("22/12/2014","Pattranit Musikaprayoon"),
+            "f": getTime("22/12/2014","Pattranit Musikaprayoon")
           }
         ]
       },
       {
         "c": [
           {
-            "v": "25/11/2577"
+            "v": "23/12/2014"
           },
           {
-            "v": 10
+            "v": searchTime("23/12/2014","Worakrit Soontornthamniti"),
+            "f": getTime("23/12/2014","Worakrit Soontornthamniti")
           },
           {
-            "v": 9
-          },
-          {
-            "v": 11
+            "v": searchTime("23/12/2014","Pattranit Musikaprayoon"),
+            "f": getTime("23/12/2014","Pattranit Musikaprayoon")
           }
         ]
       },
       {
         "c": [
           {
-            "v": "26/11/2577"
+            "v": "24/12/2014"
           },
           {
-            "v": 9
-          },
+            "v": searchTime("24/12/2014","Worakrit Soontornthamniti"),
+            "f": getTime("24/12/2014","Worakrit Soontornthamniti")          },
           {
-            "v": 10
-          },
-          {
-            "v": 12
+            "v": searchTime("24/12/2014","Pattranit Musikaprayoon"),
+            "f": getTime("24/12/2014","Pattranit Musikaprayoon")
           }
         ]
       }
     ]};
+    function searchTime(date,name){
+        for(var i = 0; i < data.length; i++){
+            if(data[i].DATE == date && data[i].NAME == name){
+                var time = data[i].TIME.HOUR+ (data[i].TIME.MINUTE/60)  ;
+                console.log(time);
+                return time;
+            }
+        }
+    }
+    function getTime(date,name){
+        for(var i = 0; i < data.length; i++){
+            if(data[i].DATE == date && data[i].NAME == name){
+                var time = data[i].TIME.HOUR+":"+data[i].TIME.MINUTE ;
+                console.log(time);
+                return time;
+            }
+        }
+    }
+      });
+
 
     chart1.options = {
     "fill": 20,
@@ -100,14 +108,7 @@ angular.module('google-chart-example', ['googlechart'])
     }
   };
 
-    function searchTime(date,name){
-        for(var i = 0; i < persons.length; i++){
-            if(persons[i].date == date && persons[i].name == name){
-                console.log(persons[i].time);
-                return persons[i].time;
-            }
-        }
-    }
+    
 
     chart1.formatters = {};
 
@@ -118,7 +119,9 @@ angular.module('google-chart-example', ['googlechart'])
 .controller('staticCtrl', function($scope,$http){
   $scope.persons = [];
 
-  $http.get('/api/time').success(function(data){
+  $http.get('/api/findsavetime').success(function(data){
     $scope.persons = data;
   })
+
+  console.log($scope.persons);  
 });
