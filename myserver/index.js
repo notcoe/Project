@@ -9,6 +9,8 @@ var db = mongojs('my_server',['std']);
 var dbsave =mongojs('my_server',['st']);
 var dbtime =mongojs('my_server',['time']);
 
+var nodemailer = require('nodemailer');
+
 var lastRfcard = {};
 var ndate = {};  
 var now={};
@@ -18,6 +20,13 @@ var savelast ={};
 app.use(express.static(__dirname+'/public'));
 
 
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'pattymsk@gmail.com',
+        pass: 'everypatty8'
+    }
+});
 
 io.emit('some event', { for: 'everyone' });
 
@@ -53,10 +62,20 @@ app.post('/api/show',function(req,res){
 	ndate = dateFormat(now, "d/m/yyyy");
 	console.log(ndate);
 	savetime();
-	console.log(savelast);
+	console.log(lastRfcard);
 	io.emit('sendRF', lastRfcard.name);
 	io.emit('book:reflesh',lastRfcard);
 	res.send(savelast)
+	if(now.getHours()>8){;
+		transporter.sendMail({
+		    from: 'pattymsk@gmail.com',
+		   	to: lastRfcard.EMAIL,
+		    subject: 'Late ',
+		    text: 'You are LATE'
+		    
+		});
+		console.log("Send Mail");
+	}
 });
 
 
@@ -103,3 +122,4 @@ function savetime(){
 					  SECOND:now.getSeconds()}}
 	dbsave.st.insert(savelast);
 }
+
