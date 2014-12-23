@@ -5,6 +5,7 @@
 <2.>    เข้าใช้  MongoDB : bin\mongo
 
 > use my_server
-> db.std.insert({id:1,name:"War",date:"24/11/2557",time:"10:00" })
-  db.std.insert({id:2,name:"Patty",date:"24/11/2557",time:"10:35"})
-  db.std.insert({id:3,name:"Not",date:"24/11/2557",time:"11:00"})
+> 
+db.std.insert({rfid:"5000B1DA96A",id:"5510110604",name:"Worakrit Soontornthamniti" })
+db.std.insert({rfid:"5000B1DA96A",id:"5510110604",name:"Pattranit Musikaprayoon" })
+db.std.insert({rfid:"5000B1DA9CA",id:"5510110331",name:"Siriphon  Panyathipo"})

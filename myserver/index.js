@@ -33,8 +33,8 @@ http.listen(3000, function(){
 });
 
 app.get('/api/std',function(req,res){
-	db.std.find({},function(err,books){
-	res.send(books);	
+	db.std.find({},function(err,data){
+	res.send(data);	
 	});
 	
 });
@@ -75,6 +75,22 @@ app.get('/api/show',function(req,res){
 app.get('/api/main',function(req,res){
 	res.redirect('/main.html');
 })
+
+
+app.get('/api/std',function(reg,res){      //sent data from server to app.js (pass docs) 
+
+      db.std.find({},function(err,docs){   //query database
+           res.send(docs);
+ 
+      });     
+})
+
+app.post('/api/std',function(req,res){
+    db.std.insert(req.body,function(err,docs){   //query database keep data in database
+           res.send(docs);
+           io.emit('std:refresh');  //broadcast to all client
+      });
+});
 
 
 function savetime(){

@@ -33,11 +33,37 @@ function refleshBooks(){
 })
 
 
-.controller('adminCtrl', function($scope,$http){
+.controller('adminCtrl', function($scope,$http,socketIO){
+  
   $scope.persons = [];
+  refreshPersons();
 
-  $http.get('/api/std').success(function(data){
-  $scope.persons = data;
-  })
-})
-;
+  function refreshPersons(){
+    $http.get('api/std').success(function(data){  //call data from database
+           $scope.persons = data;
+    })
+  }
+
+
+  socketIO.on('std:refresh',function(){
+           refreshPersons();
+      });
+
+  $scope.submit = function(){
+        
+        $http.post('api/std',{     //keep data in database
+          rfid : $scope.rfid,
+          id : $scope.id,
+          name : $scope.name
+
+                 
+        })
+
+         .success(function(data){  
+             console.log("seccess");
+         })
+
+    };
+
+
+});
