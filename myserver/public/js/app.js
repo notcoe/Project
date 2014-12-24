@@ -14,7 +14,7 @@ angular.module("myApp",['btford.socket-io'])
   refleshBooks();
 
 function refleshBooks(){    
-    $http.get('/api/findsavetime').success(function(data){
+    $http.get('/api/show').success(function(data){
       $scope.std = data;
       console.log(data);
     })

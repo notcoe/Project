@@ -69,22 +69,17 @@ app.post('/api/edit',function(req,res){
 });
 
 
-//for static
-app.get('/api/time',function(req,res){
-	dbtime.time.find({},function(err,data){
-	res.send(data);
-	console.log("Connect /api/time");
-	});
-});
+
 
 app.post('/api/show',function(req,res){		
 	lastRfcard=req.body
 	now = new Date();
 	ndate = dateFormat(now, "d/m/yyyy");
 	console.log(ndate);
+
 	savetime();
 	console.log(lastRfcard);
-	io.emit('sendRF', lastRfcard.name);
+	
 	io.emit('book:reflesh',lastRfcard);
 	res.send(savelast)
 	if(now.getHours()>8){;
