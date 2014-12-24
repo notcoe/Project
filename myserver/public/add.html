@@ -7,17 +7,21 @@
 	<script type="text/javascript" src="lib/angular-socket-io/socket.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
-	
+	<link href="css/freelancer.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/fonts.css" rel="stylesheet" type="text/css">
+  <link href="css/fonts2.css" rel="stylesheet" type="text/css">
+
 </head>
 <body ng-controller="adminCtrl">
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">CARD</a>
+      <a class="navbar-brand" href="/admin.html">Project</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="/add.html">Add</a></li>
         <li><a href="/edit.html">Edit</a></li>
       </ul>
@@ -25,21 +29,31 @@
   </div>
 </nav>
 
+<header>
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                        <h1>ADD PERSON</h1>
+                        <hr class="star-light">                
+                </div>
+            </div>
+        </div>
+</header>
 
-
-      <form role="form" ng-submit="submit()">
+<br></br>
+      <form class="form-inline" role="form" ng-submit="submit()">
         <div class="form-group">
-    <label for="InputID">RFID</label>
-    <input type="text" class="form-control" id="InputRFID" placeholder="Enter RFID" ng-model="rfid">
-  </div>
-    <div class="form-group">
-    <label for="InputID">ID</label>
-    <input type="number" class="form-control" id="InputID" placeholder="Enter ID" ng-model="id">
-  </div>
-  <div class="form-group">
-    <label for="InputName">Name</label>
-    <input type="text" class="form-control" id="InputName" placeholder="Enter Name" ng-model="name">
-  </div>
+          <label for="InputID">RFID</label>
+          <input type="text" class="form-control" id="InputRFID" placeholder="Enter RFID" ng-model="rfid">
+        </div>
+          <div class="form-group">
+          <label for="InputID">ID</label>
+          <input type="number" class="form-control" id="InputID" placeholder="Enter ID" ng-model="id">
+        </div>
+        <div class="form-group">
+          <label for="InputName">Name</label>
+          <input type="text" class="form-control" id="InputName" placeholder="Enter Name" ng-model="name">
+        </div>
  
   <button type="submit" class="btn btn-success">Add</button>
   </form>

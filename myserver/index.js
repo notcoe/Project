@@ -50,13 +50,24 @@ app.get('/api/std',function(req,res){
 });
 
 app.post('/api/getByID',function(req,res){
-	console.log(req.body.id);
-	db.std.find({id:req.body.id},function(err,data){
-		console.log(data);
+	//console.log(req.body.id);
+	db.std.find({ID:req.body.id},function(err,data){
+		//console.log(data);
 		res.send(data);	
 	});
 	
 });
+
+app.post('/api/edit',function(req,res){
+	console.log(req.body);
+	db.std.update({RFID: req.body.rfid , ID : req.body.id, 
+		NAME : req.body.name},function(err,persons){
+		console.log(persons);
+		res.send(persons);	
+		io.emit("std:refresh");
+	});
+});
+
 
 //for static
 app.get('/api/time',function(req,res){
@@ -105,38 +116,26 @@ app.get('/api/main',function(req,res){
 	res.redirect('/main.html');
 })
 
-<<<<<<< HEAD
-=======
 app.get('/api/edit',function(req,res){
 	res.redirect('/edit.html');
 })
 
 
-app.get('/api/std',function(reg,res){      //sent data from server to app.js (pass docs) 
+app.get('/api/std',function(reg,res){      
 
-      db.std.find({},function(err,docs){   //query database
+      db.std.find({},function(err,docs){  
            res.send(docs);
  
       });     
 })
 
->>>>>>> a25e104b31fd2310ca142554052336fc5ed70f3f
 app.post('/api/std',function(req,res){
-    db.std.insert(req.body,function(err,docs){   //query database keep data in database
+    db.std.insert(req.body,function(err,docs){   
            res.send(docs);
-           io.emit('std:refresh');  //broadcast to all client
+           io.emit('std:refresh');  
       });
 });
 
-app.post('/api/edit',function(req,res){
-	//console.log(req.body.all);
-	db.std.update({id : req.body.id},{rfid : req.body.rfid , id : req.body.id, 
-		name : req.body.name},function(err,persons){
-	//	console.log(persons);
-		res.send(persons);	
-		io.emit("std:refresh");
-	});
-});
 
 function savetime(){
 	savelast ={	RFID:lastRfcard.RFID,

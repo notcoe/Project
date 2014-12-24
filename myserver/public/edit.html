@@ -7,26 +7,62 @@
 	<script type="text/javascript" src="lib/angular-socket-io/socket.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
-	
+	<link href="css/freelancer.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="css/fonts.css" rel="stylesheet" type="text/css">
+  <link href="css/fonts2.css" rel="stylesheet" type="text/css">
+
 </head>
 <body ng-controller="adminCtrl">
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">CARD</a>
+      <a class="navbar-brand" href="/admin.html">Project</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="/add.html">Add</a></li>
         <li><a href="/edit.html">Edit</a></li>
       </ul>
     </div>
   </div>
 </nav>
+<header>
+        <div>
+            <div class="row">
+                <div class="col-lg-12">
+                        <h1>EDIT PERSON</h1>
+                        <hr class="star-light">                
+                </div>
+            </div>
+        </div>
+</header>
 
- Student ID : <input  class="text-center"  type="text" id="ID_search" name="ID_search" placeholder="Student-ID" ng-model="ID_search.id"> <button type="button" ng-click="ID_searching()" class="btn btn-info">Search</button> 
-                                <table id="table1"class="table table-striped">
+ <h6 class="text-success">Student ID : <input  class="text-center"  type="text" id="ID_search" name="ID_search" placeholder="Student-ID" ng-model="ID_search.id"> <button type="button" ng-click="ID_searching()" class="btn btn-info">Search</button> </h6>
+ <h6 class="text-success">
+  <ul class="list-group list-inline" ng-repeat="person in person_searchAll">
+        <li class="list-group-item">
+            <label for="InputID">RFID</label>
+            <input type = "text" ng-model = "selectedModel.RFID" ng-init = "selectedModel.RFID=person.RFID">
+        </li>
+        <li class="list-group-item">
+
+            <label for="InputID">ID</label>
+            <input type = "text" ng-model = "selectedModel.ID" ng-init = "selectedModel.ID=person.ID">
+        </li>
+        <li class="list-group-item">
+
+            <label for="InputName">Name</label>
+            <input type = "text" ng-model = "selectedModel.NAME" ng-init = "selectedModel.NAME=person.NAME">  
+        </li>
+
+  <li><button type="button" class="btn btn-primary" ng-click="edit()">Update</button></li>
+  </ul>
+  </h6>
+
+                                
+                               <!--  <table id="table1"class="table table-striped">
                                 <thead>
                                     <th><span class="label label-primary">ID</span></th>
                                     <th><span class="label label-primary">Name</span></th>
@@ -35,14 +71,14 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="person in person_searchAll">
-                                      <td><input type = "text" ng-model = "selectedModel.rfid" ng-init = "selectedModel.rfid=person.rfid"></td>
-                                      <td><input type = "text" ng-model = "selectedModel.id" ng-init = "selectedModel.id=person.id"></td>
-                                      <td><input type = "text" ng-model = "selectedModel.name" ng-init = "selectedModel.name=person.name"></td>
+                                      <td><input type = "text" ng-model = "selectedModel.RFID" ng-init = "selectedModel.RFID=person.RFID"></td>
+                                      <td><input type = "text" ng-model = "selectedModel.ID" ng-init = "selectedModel.ID=person.ID"></td>
+                                      <td><input type = "text" ng-model = "selectedModel.NAME" ng-init = "selectedModel.NAME=person.NAME"></td>
 
                                     </tr>
                                 </tbody>
                             </table>
-                            <br><button type="button" class="btn btn-primary" ng-click="edit()">Update</button></h3></p>
+                            <br><button type="button" class="btn btn-primary" ng-click="edit()">Update</button></h3></p> -->
 
 </body>
 </html>
