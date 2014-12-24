@@ -59,9 +59,9 @@ app.post('/api/getByID',function(req,res){
 });
 
 app.post('/api/edit',function(req,res){
-	console.log(req.body);
-	db.std.update({RFID: req.body.rfid , ID : req.body.id, 
-		NAME : req.body.name},function(err,persons){
+	console.log(req.body.ID);
+	db.std.update({ID: req.body.ID},{RFID: req.body.RFID , ID : req.body.ID, 
+		NAME : req.body.NAME},function(err,persons){
 		console.log(persons);
 		res.send(persons);	
 		io.emit("std:refresh");

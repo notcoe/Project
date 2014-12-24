@@ -50,9 +50,6 @@ function refleshBooks(){
   };  
 
 
-
- $scope.idSearch = "";
- $scope.personInstance = {};
  $scope.person_searchAll = [];
  $scope.ID_search = {};
  $scope.selectedModel ={};
